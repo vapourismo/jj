@@ -61,6 +61,7 @@ pub struct GitSettings {
     pub abandon_unreachable_commits: bool,
     pub subprocess: bool,
     pub executable_path: PathBuf,
+    pub protect_local_branches: bool,
 }
 
 impl GitSettings {
@@ -70,6 +71,7 @@ impl GitSettings {
             abandon_unreachable_commits: settings.get_bool("git.abandon-unreachable-commits")?,
             subprocess: settings.get_bool("git.subprocess")?,
             executable_path: settings.get("git.executable-path")?,
+            protect_local_branches: settings.get_bool("git.protect-local-branches")?,
         })
     }
 }
@@ -81,6 +83,7 @@ impl Default for GitSettings {
             abandon_unreachable_commits: true,
             subprocess: false,
             executable_path: PathBuf::from("git"),
+            protect_local_branches: false,
         }
     }
 }
