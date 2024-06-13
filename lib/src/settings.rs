@@ -58,6 +58,7 @@ struct UserSettingsData {
 pub struct GitSettings {
     pub auto_local_bookmark: bool,
     pub abandon_unreachable_commits: bool,
+    pub protect_local_branches: bool,
 }
 
 impl GitSettings {
@@ -70,9 +71,13 @@ impl GitSettings {
             opt1.or(opt2).unwrap_or(false)
         };
         let abandon_unreachable_commits = settings.get_bool("git.abandon-unreachable-commits")?;
+        let protect_local_branches = settings
+            .get_bool("git.protect-local-branches")
+            .unwrap_or(false);
         Ok(GitSettings {
             auto_local_bookmark,
             abandon_unreachable_commits,
+            protect_local_branches,
         })
     }
 }
@@ -82,6 +87,7 @@ impl Default for GitSettings {
         GitSettings {
             auto_local_bookmark: false,
             abandon_unreachable_commits: true,
+            protect_local_branches: false,
         }
     }
 }
