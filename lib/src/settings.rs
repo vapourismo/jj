@@ -67,6 +67,7 @@ pub struct GitSettings {
     pub subprocess: bool,
     pub executable_path: PathBuf,
     pub write_change_id_header: bool,
+    pub protect_local_branches: bool,
 }
 
 impl GitSettings {
@@ -78,6 +79,7 @@ impl GitSettings {
             subprocess: settings.get_bool("git.subprocess")?,
             executable_path: settings.get("git.executable-path")?,
             write_change_id_header: settings.get("git.write-change-id-header")?,
+            protect_local_branches: settings.get_bool("git.protect-local-branches")?,
         })
     }
 }
@@ -91,6 +93,7 @@ impl Default for GitSettings {
             subprocess: true,
             executable_path: PathBuf::from("git"),
             write_change_id_header: false,
+            protect_local_branches: false,
         }
     }
 }
