@@ -493,7 +493,7 @@ pub fn import_some_refs(
                 default_remote_ref_state_for(GitRefKind::Bookmark, symbol, git_settings)
             },
         };
-        if new_remote_ref.is_tracked() {
+        if new_remote_ref.is_tracked() && !git_settings.protect_local_branches {
             mut_repo.merge_local_bookmark(symbol.name, base_target, &new_remote_ref.target);
         }
         // Remote-tracking branch is the last known state of the branch in the remote.
