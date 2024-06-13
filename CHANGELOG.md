@@ -145,6 +145,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 * `jj squash` now accepts a `--keep-emptied` option to keep the source commit.
 
+* `git.protect-local-branches = true` prevents local branches from moving upon `jj git fetch`
+
 ### Fixed bugs
 
 * `jj git push` now ignores immutable commits when checking whether a
